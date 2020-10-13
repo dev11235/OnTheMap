@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+struct Udacity: Codable {
+    let udacity: [String: String]
+}

@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+class OnTheMapModel {
+    static var studentLocations = [StudentLocation]()
+}

@@ -8,6 +8,12 @@
 
 import UIKit
 
-class UdacityClientError: Error {
+enum UdacityClientError: Error {
+    case accountNotFound
+}
 
+extension UdacityClientError: LocalizedError {
+    public var errorDescription: String? {
+        
+    }
 }

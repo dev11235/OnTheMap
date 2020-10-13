@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+struct StudentLocationsResponse: Codable {
+    let results: [StudentLocation]
+}

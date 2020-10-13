@@ -13,8 +13,6 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    var annotations = [MKPointAnnotation]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
@@ -23,23 +21,19 @@ class MapViewController: UIViewController {
         UdacityClient.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateMap()
+    }
+    
     @IBAction
     func refreshTapped(_ sender: UIBarButtonItem) {
         UdacityClient.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
-        OnTheMapModel.studentLocations = studentLocations
+    func updateMap() {
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        var annotations = [MKPointAnnotation]()
         
         for location in OnTheMapModel.studentLocations {
             let lat = CLLocationDegrees(location.latitude)
@@ -50,10 +44,15 @@ class MapViewController: UIViewController {
             annotation.title = "\(location.firstName) \(location.lastName)"
             annotation.subtitle = location.mediaURL
             
-            self.annotations.append(annotation)
+            annotations.append(annotation)
         }
         
         self.mapView.addAnnotations(annotations)
+    }
+
+    func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
+        OnTheMapModel.studentLocations = studentLocations
+        updateMap()
     }
 }
 
@@ -80,9 +79,8 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            let app = UIApplication.shared
-            if let toOpen = view.annotation?.subtitle! {
-                app.open(URL(string: toOpen)!)
+            if let toOpen = view.annotation?.subtitle!, let url = URL(string: toOpen) {
+                UIApplication.shared.open(url)
             }
         }
     }

@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+struct UdacityAccount: Codable {
+    let registered: Bool
+    let key: String
+}

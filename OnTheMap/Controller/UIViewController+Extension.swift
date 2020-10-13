@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import UIKit
+
+extension UIViewController {
+    @IBAction
+    func addLocationTapped(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "addLocation", sender: nil)
+    }
+}

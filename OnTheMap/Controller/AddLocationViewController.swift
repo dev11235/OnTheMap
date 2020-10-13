@@ -7,24 +7,74 @@
 //
 
 import UIKit
+import CoreLocation
 
 class AddLocationViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var geocodeTextField: UITextField!
+    @IBOutlet weak var mediaURLTextField: UITextField!
+    var placeMark: CLPlacemark?
+    
+    
+    @IBAction func cancelTapped(_ sender: Any) {
+        _ = navigationController?.popViewController(animated: true)
     }
     
+    func getErrorMessageForGeocodinFailure(_ error: Error?) -> String {
+        if let clError = error as? CLError {
+            switch clError.code {
+            case .geocodeFoundNoResult:
+                return "Location not found."
+            default:
+                return clError.localizedDescription
+            }
+        } else {
+            return error?.localizedDescription ?? ""
+        }
+    }
+    
+    func showGeocodingFailure(message: String) {
+        let alertVC = UIAlertController(title: "Find Location Failed", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alertVC, animated: true)
+    }
+    
+    func handleForwardGeocode(placeMarks: [CLPlacemark]?, error: Error?) {
+        if let placeMark = placeMarks?[0] {
+            self.placeMark = placeMark
+            self.performSegue(withIdentifier: "finishAddLocation", sender: nil)
+        } else {
+            showGeocodingFailure(message: getErrorMessageForGeocodinFailure(error))
+        }
+    }
+    
+    @IBAction func findLocationTapped(_ sender: Any) {
+        if mediaURLTextField.text?.isEmpty == true {
+            showGeocodingFailure(message: "Empty link.")
+        }
+        
+        CLGeocoder().geocodeAddressString(geocodeTextField.text!) { (placeMarks, error) in
+            DispatchQueue.main.async {
+                self.handleForwardGeocode(placeMarks: placeMarks, error: error)
+            }
+        }
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let placeMark = placeMark {
+            let finishAddLocationController = segue.destination as! FinishAddLocationViewController
+            finishAddLocationController.placeMark = placeMark
+            finishAddLocationController.mapString = placeMark.name!
+            finishAddLocationController.mediaURL = URL(string: self.mediaURLTextField.text!)
+        }
     }
-    */
-
 }
