@@ -13,9 +13,7 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UdacityClient.getStudentLocations { (studentLocations, error) in
-            OnTheMapModel.studentLocations = studentLocations
-        }
+        UdacityClient.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,7 +23,13 @@ class TableViewController: UITableViewController {
     
     @IBAction
     func refreshTapped(_ sender: UIBarButtonItem) {
-        UdacityClient.getStudentLocations { (studentLocations, error) in
+        UdacityClient.getStudentLocations(completion: handleStudentLocationsResponse(studentLocations:error:))
+    }
+    
+    func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
+        if let error = error {
+            showDownloadStudentLocationsFailure(message: error.localizedDescription)
+        } else {
             OnTheMapModel.studentLocations = studentLocations
             self.tableView.reloadData()
         }
@@ -57,5 +61,11 @@ class TableViewController: UITableViewController {
             UIApplication.shared.open(url)
             tableView.deselectRow(at: indexPath, animated: true)
         }
+    }
+    
+    func showDownloadStudentLocationsFailure(message: String) {
+        let alertVC = UIAlertController(title: "Download Student Locations Failed", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alertVC, animated: true)
     }
 }

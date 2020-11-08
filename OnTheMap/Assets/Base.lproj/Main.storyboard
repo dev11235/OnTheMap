@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vde-5g-cnl">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vde-5g-cnl">
                                 <rect key="frame" x="40" y="424" width="334" height="40"/>
                                 <color key="backgroundColor" red="0.1950399562288542" green="0.71109066210713845" blue="0.92579695385724758" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -63,7 +65,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rmy-tx-iWa">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rmy-tx-iWa">
                                         <rect key="frame" x="184" y="0.0" width="54" height="30"/>
                                         <state key="normal" title="Sign Up"/>
                                         <connections>
@@ -76,7 +78,8 @@
                                 <rect key="frame" x="197" y="524" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="zq1-ii-9dN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3qy-qf-Kep"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Vde-5g-cnl" secondAttribute="trailing" constant="40" id="8yM-B8-nCt"/>
@@ -95,7 +98,6 @@
                             <constraint firstItem="4cc-gB-dPk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="siO-gW-DSU"/>
                             <constraint firstItem="seS-yP-YLf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="zuC-Zo-wkc"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="mYg-xb-Wno" id="pmB-lJ-c7T"/>
@@ -136,7 +138,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bgx-hN-U4Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" textLabel="gaZ-tt-PPg" detailTextLabel="3AT-R0-gdc" imageView="swj-bD-srs" style="IBUITableViewCellStyleSubtitle" id="Pjo-SJ-994">
                                 <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
@@ -146,7 +148,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gaZ-tt-PPg">
-                                            <rect key="frame" x="91" y="10" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="91" y="10" width="33" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -173,13 +175,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="On The Map" id="rQu-No-qQ9">
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="cOO-9D-HuV">
+                            <connections>
+                                <action selector="logoutTapped:" destination="Fco-Ql-e46" id="4XQ-jx-PnV"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="plus" catalog="system" id="WnC-y1-FPE">
+                            <barButtonItem title="Add" image="plus" catalog="system" id="WnC-y1-FPE">
                                 <connections>
                                     <action selector="addLocationTapped:" destination="Fco-Ql-e46" id="i8d-Lq-HIj"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="arrow.clockwise" catalog="system" id="TlU-2y-WAk">
+                            <barButtonItem title="Refresh" image="arrow.clockwise" catalog="system" id="TlU-2y-WAk">
                                 <connections>
                                     <action selector="refreshTapped:" destination="Fco-Ql-e46" id="usm-TO-dA4"/>
                                 </connections>
@@ -240,23 +247,28 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </mapView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="SCx-8v-oOq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Xgq-mP-NQf" firstAttribute="leading" secondItem="SCx-8v-oOq" secondAttribute="leading" id="8AH-LN-2qM"/>
                             <constraint firstItem="Xgq-mP-NQf" firstAttribute="bottom" secondItem="SCx-8v-oOq" secondAttribute="bottom" id="eff-6B-Is1"/>
                             <constraint firstItem="Xgq-mP-NQf" firstAttribute="top" secondItem="SCx-8v-oOq" secondAttribute="top" id="mwK-q0-4T7"/>
                             <constraint firstItem="Xgq-mP-NQf" firstAttribute="trailing" secondItem="SCx-8v-oOq" secondAttribute="trailing" id="ux5-3G-Lmg"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="SCx-8v-oOq"/>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="IHL-Vm-GG2">
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="QuS-GU-K1A">
+                            <connections>
+                                <action selector="logoutTapped:" destination="GT1-xb-QH5" id="b5N-YB-Q2O"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem image="plus" catalog="system" id="Et7-vk-rGM">
+                            <barButtonItem title="Add" image="plus" catalog="system" id="Et7-vk-rGM">
                                 <connections>
                                     <action selector="addLocationTapped:" destination="GT1-xb-QH5" id="oy7-Eq-5a2"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="arrow.clockwise" catalog="system" id="qCh-gh-pAA">
+                            <barButtonItem title="Refresh" image="arrow.clockwise" catalog="system" id="qCh-gh-pAA">
                                 <connections>
                                     <action selector="refreshTapped:" destination="GT1-xb-QH5" id="RPe-9Q-cde"/>
                                 </connections>
@@ -288,7 +300,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hv-zM-dhD">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hv-zM-dhD">
                                 <rect key="frame" x="40" y="368" width="334" height="40"/>
                                 <color key="backgroundColor" red="0.39935664189999998" green="0.63487349319999997" blue="0.84834612899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -315,8 +327,12 @@
                                     <constraint firstAttribute="height" constant="100" id="haA-AE-v7t"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="GrR-Rh-DLt">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="2xk-EZ-3Ct"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2xk-EZ-3Ct" firstAttribute="trailing" secondItem="ga4-fc-rSh" secondAttribute="trailing" constant="87" id="B5G-TR-bRN"/>
                             <constraint firstItem="4hv-zM-dhD" firstAttribute="leading" secondItem="2xk-EZ-3Ct" secondAttribute="leading" constant="40" id="IHI-Lb-oTR"/>
@@ -330,8 +346,9 @@
                             <constraint firstItem="KaZ-gF-0nJ" firstAttribute="leading" secondItem="2xk-EZ-3Ct" secondAttribute="leading" constant="40" id="jxX-ih-yUs"/>
                             <constraint firstItem="2xk-EZ-3Ct" firstAttribute="trailing" secondItem="4hv-zM-dhD" secondAttribute="trailing" constant="40" id="ldN-ua-R8U"/>
                             <constraint firstItem="7Hr-gW-K1M" firstAttribute="top" secondItem="KaZ-gF-0nJ" secondAttribute="bottom" constant="10" id="n7g-LW-mFr"/>
+                            <constraint firstItem="GrR-Rh-DLt" firstAttribute="centerX" secondItem="sxi-MI-cz0" secondAttribute="centerX" id="rPZ-gR-Dqt"/>
+                            <constraint firstItem="GrR-Rh-DLt" firstAttribute="top" secondItem="4hv-zM-dhD" secondAttribute="bottom" constant="30" id="waF-kW-R6U"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="2xk-EZ-3Ct"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="5AO-sN-Hht">
                         <barButtonItem key="leftBarButtonItem" title="CANCEL" id="zTQ-8z-dab">
@@ -342,6 +359,7 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="acivityIndicator" destination="GrR-Rh-DLt" id="sxI-OH-DmU"/>
                         <outlet property="geocodeTextField" destination="KaZ-gF-0nJ" id="Csn-Ce-iOP"/>
                         <outlet property="mediaURLTextField" destination="7Hr-gW-K1M" id="uJK-9V-lXe"/>
                         <segue destination="jKI-bA-iib" kind="show" identifier="finishAddLocation" id="kpw-uX-5uc"/>
@@ -362,7 +380,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3ts-3b-nP1">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRo-l9-DHt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRo-l9-DHt">
                                 <rect key="frame" x="40" y="792" width="334" height="40"/>
                                 <color key="backgroundColor" red="0.39935664189999998" green="0.63487349319999997" blue="0.84834612899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -376,7 +394,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="BjX-vB-vtR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="BjX-vB-vtR" firstAttribute="bottom" secondItem="cRo-l9-DHt" secondAttribute="bottom" constant="30" id="4yg-5y-oP6"/>
                             <constraint firstItem="BjX-vB-vtR" firstAttribute="trailing" secondItem="cRo-l9-DHt" secondAttribute="trailing" constant="40" id="RMA-C8-sjy"/>
@@ -386,7 +405,6 @@
                             <constraint firstItem="3ts-3b-nP1" firstAttribute="leading" secondItem="BjX-vB-vtR" secondAttribute="leading" id="rhm-yP-fob"/>
                             <constraint firstItem="3ts-3b-nP1" firstAttribute="top" secondItem="BjX-vB-vtR" secondAttribute="top" id="vbT-ja-rfm"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="BjX-vB-vtR"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="mzs-Bb-260"/>
                     <connections>
@@ -408,5 +426,8 @@
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="udacity-logo" width="160" height="160"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

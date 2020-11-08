@@ -14,4 +14,12 @@ extension UIViewController {
     func addLocationTapped(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "addLocation", sender: nil)
     }
+    
+    @IBAction
+    func logoutTapped(_ sender: UIBarButtonItem) {
+        UdacityClient.deleteSession { (success, error) in
+            print("successfully logged out")
+            self.dismiss(animated: true)
+        }
+    }
 }

@@ -19,13 +19,15 @@ class UdacityClient {
         static let base = "https://onthemap-api.udacity.com/v1"
         
         case postSession
+        case deleteSession
         case getLocations
         case postLocation
         
         var urlString: String {
             switch self {
             case .postSession: return Endpoints.base + "/session"
-            case .getLocations: return Endpoints.base + "/StudentLocation?order=-updatedAt"
+            case .deleteSession: return Endpoints.base + "/session"
+            case .getLocations: return Endpoints.base + "/StudentLocation?order=-updatedAt&limit=100"
             case .postLocation: return Endpoints.base + "/StudentLocation"
             }
         }
@@ -111,6 +113,33 @@ class UdacityClient {
                 completion(false, error)
             }
         }
+    }
+    
+    class func deleteSession(completion: @escaping (Bool, Error?) -> Void) {
+        var request = URLRequest(url: Endpoints.deleteSession.url)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+            } else {
+                let newData = data?.subdata(in: 5..<data!.count) /* subset response data! */
+                print(String(data: newData!, encoding: .utf8)!)
+                DispatchQueue.main.async {
+                    completion(true, nil)
+                }
+            }
+        }
+        task.resume()
     }
     
     class func getStudentLocations(completion: @escaping ([StudentLocation], Error?) -> Void) {

@@ -43,7 +43,7 @@ class FinishAddLocationViewController: UIViewController {
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = placeMark.location!.coordinate
-        let regionRadius: CLLocationDistance = 1000000
+        let regionRadius: CLLocationDistance = 10000
         let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         
         DispatchQueue.main.async {

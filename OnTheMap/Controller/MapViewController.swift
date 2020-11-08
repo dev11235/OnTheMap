@@ -51,12 +51,20 @@ class MapViewController: UIViewController {
     }
 
     func handleStudentLocationsResponse(studentLocations: [StudentLocation], error: Error?) {
-        OnTheMapModel.studentLocations = studentLocations
-        updateMap()
+        if let error = error {
+            showDownloadStudentLocationsFailure(message: error.localizedDescription)
+        } else {
+            OnTheMapModel.studentLocations = studentLocations
+            updateMap()
+        }
+    }
+    
+    func showDownloadStudentLocationsFailure(message: String) {
+        let alertVC = UIAlertController(title: "Download Student Locations Failed", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alertVC, animated: true)
     }
 }
-
-
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

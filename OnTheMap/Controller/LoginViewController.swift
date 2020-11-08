@@ -33,6 +33,7 @@ class LoginViewController: UIViewController {
             if success {
                 print("successfully authenticated")
                 self.performSegue(withIdentifier: "completeLogin", sender: nil)
+                self.setLoggingIn(false)
             } else {
                 self.showLoginFailure(message: error?.localizedDescription ?? "Unknown Error")
             }

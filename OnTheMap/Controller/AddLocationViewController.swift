@@ -13,11 +13,23 @@ class AddLocationViewController: UIViewController {
 
     @IBOutlet weak var geocodeTextField: UITextField!
     @IBOutlet weak var mediaURLTextField: UITextField!
+    @IBOutlet weak var acivityIndicator: UIActivityIndicatorView!
     var placeMark: CLPlacemark?
     
     
     @IBAction func cancelTapped(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
+    }
+    
+    func setUI(geocoding: Bool) {
+        if geocoding {
+            acivityIndicator.startAnimating()
+        } else {
+            acivityIndicator.stopAnimating()
+        }
+        
+        geocodeTextField.isEnabled = !geocoding
+        mediaURLTextField.isEnabled = !geocoding
     }
     
     func getErrorMessageForGeocodinFailure(_ error: Error?) -> String {
@@ -40,6 +52,7 @@ class AddLocationViewController: UIViewController {
     }
     
     func handleForwardGeocode(placeMarks: [CLPlacemark]?, error: Error?) {
+        setUI(geocoding: false)
         if let placeMark = placeMarks?[0] {
             self.placeMark = placeMark
             self.performSegue(withIdentifier: "finishAddLocation", sender: nil)
@@ -53,6 +66,8 @@ class AddLocationViewController: UIViewController {
             showGeocodingFailure(message: "Empty link.")
         }
         
+        setUI(geocoding: true)
+        
         CLGeocoder().geocodeAddressString(geocodeTextField.text!) { (placeMarks, error) in
             DispatchQueue.main.async {
                 self.handleForwardGeocode(placeMarks: placeMarks, error: error)
@@ -63,6 +78,7 @@ class AddLocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI(geocoding: false)
         // Do any additional setup after loading the view.
     }
 
